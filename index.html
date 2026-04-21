@@ -10,8 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Poppins:wght@400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
     <style>
-      /* --- BASE & FONDO --- */
-      :root { --neon-green: #00ff88; --dark-bg: #000000; }
+      :root { 
+          --neon-green: #00ff88; 
+          --dark-bg: #000000; 
+          --card-bg: #0a0a0a;
+      }
       
       body {
           background-color: var(--dark-bg);
@@ -21,150 +24,122 @@
           overflow-x: hidden;
       }
 
+      /* Fondo de estrellas */
       body::before {
           content: "";
           position: fixed;
           top: 0; left: 0; width: 100%; height: 100%;
-          background: radial-gradient(circle at center, rgba(0, 255, 136, 0.03) 0%, transparent 70%),
+          background: radial-gradient(circle at center, rgba(0, 255, 136, 0.02) 0%, transparent 75%),
                       url('https://www.transparenttextures.com/patterns/stardust.png');
-          animation: backgroundMove 120s linear infinite;
-          z-index: -1;
-          opacity: 0.3;
+          animation: backgroundMove 150s linear infinite;
+          z-index: -2;
+          opacity: 0.25;
       }
 
       @keyframes backgroundMove { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
 
+      /* --- ESTILO 1: ANIMACIÓN LÁSER (Solo para la primera tarjeta) --- */
+      .hero-laser-card {
+          position: relative;
+          overflow: hidden;
+          background: var(--card-bg);
+          border-radius: 12px;
+          z-index: 1;
+          padding: 3rem;
+          border: 1px solid rgba(0, 255, 136, 0.1);
+      }
+
+      .hero-laser-card::before {
+          content: "";
+          position: absolute;
+          top: -50%; left: -50%; width: 200%; height: 200%;
+          background: conic-gradient(transparent, var(--neon-green), transparent 30%);
+          animation: laserRotate 4s linear infinite;
+          z-index: -2;
+      }
+
+      .hero-laser-card::after {
+          content: "";
+          position: absolute;
+          inset: 3px;
+          background: var(--card-bg);
+          border-radius: 10px;
+          z-index: -1;
+      }
+
+      @keyframes laserRotate { 100% { transform: rotate(1turn); } }
+
+      /* --- ESTILO 2: ANIMACIÓN DE RESPIRACIÓN (Para Multimedia y Proyectos) --- */
+      .respiracao-card {
+          background: rgba(15, 15, 15, 0.9);
+          border: 2px solid var(--neon-green);
+          border-radius: 15px;
+          animation: neonBreath 4s infinite ease-in-out;
+          transition: transform 0.3s ease;
+          display: flex;
+          flex-direction: column;
+      }
+
       @keyframes neonBreath {
-          0%, 100% { box-shadow: 0 0 10px var(--neon-green), 0 0 20px rgba(0, 255, 136, 0.2); border-color: var(--neon-green); }
-          50% { box-shadow: 0 0 20px var(--neon-green), 0 0 40px rgba(0, 255, 136, 0.6); border-color: #77ffc9; }
+          0%, 100% { box-shadow: 0 0 10px var(--neon-green), 0 0 15px rgba(0, 255, 136, 0.2); border-color: var(--neon-green); }
+          50% { box-shadow: 0 0 20px var(--neon-green), 0 0 35px rgba(0, 255, 136, 0.5); border-color: #77ffc9; }
+      }
+
+      .respiracao-card:hover {
+          transform: translateY(-5px);
+          animation: none;
+          box-shadow: 0 0 25px var(--neon-green);
       }
 
       .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-      /* --- HEADER --- */
-      .cabecalho { padding: 20px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.1); }
-      .cabecalho-container { display: flex; justify-content: space-between; align-items: center; }
-      .cabecalho-logo { font-family: 'Chakra Petch'; font-size: 1.5rem; text-decoration: none; color: #fff; }
-      .cabecalho-menu a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
-      .cabecalho-menu a:hover { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
+      /* --- HERO CONTENT --- */
+      .conteudo-principal { display: flex; align-items: center; justify-content: space-between; padding: 6rem 0; gap: 50px; flex-wrap: wrap; }
+      .conteudo-principal-titulo { font-family: 'Share Tech Mono', monospace; font-size: 3.2rem; margin: 0; text-transform: uppercase; }
+      .conteudo-principal-titulo span { display: block; font-family: 'Poppins'; font-size: 1.1rem; color: var(--neon-green); margin-top: 10px; }
+      .conteudo-principal-imagem img { width: 300px; height: 300px; border-radius: 50%; border: 2px solid var(--neon-green); object-fit: cover; box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
 
-      /* --- HERO SECTION --- */
-      .conteudo-principal { display: flex; align-items: center; justify-content: space-between; padding: 6rem 0; gap: 40px; flex-wrap: wrap; }
-      .conteudo-principal-escrito { flex: 1; min-width: 300px; padding: 2rem; background: rgba(10, 10, 10, 0.7); border-radius: 20px; animation: neonBreath 4s infinite; backdrop-filter: blur(10px); }
-      .conteudo-principal-titulo { font-family: 'Chakra Petch'; font-size: 3rem; margin: 0; text-shadow: 0 0 10px var(--neon-green); }
-      .conteudo-principal-titulo span { display: block; font-size: 1.2rem; color: var(--neon-green); margin-top: 10px; }
-      .conteudo-principal-imagem img { width: 300px; height: 300px; border-radius: 50%; border: 3px solid var(--neon-green); animation: neonBreath 4s infinite; object-fit: cover; }
-
-      /* --- REPRODUCTORES (CYBERPUNK STYLE) --- */
-      .multimedia-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 3rem; }
-      
-      .player-card {
-          background: #0a0a0a;
-          border: 2px solid var(--neon-green);
-          border-radius: 10px;
-          overflow: hidden;
-          animation: neonBreath 5s infinite;
-          position: relative;
-      }
-
-      .player-header {
-          background: var(--neon-green);
-          color: #000;
-          padding: 5px 15px;
-          font-family: 'Share Tech Mono', monospace;
-          font-weight: bold;
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.8rem;
-      }
-
+      /* --- REPRODUCTORES --- */
+      .section-title { text-align: center; font-family: 'Chakra Petch'; color: var(--neon-green); margin: 4rem 0 2rem; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 10px var(--neon-green); }
+      .multimedia-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+      .player-header { background: var(--neon-green); color: #000; padding: 6px 15px; font-family: 'Share Tech Mono'; font-weight: bold; display: flex; justify-content: space-between; font-size: 0.8rem; border-radius: 12px 12px 0 0; }
       .tv-frame { width: 100%; height: 250px; border: none; background: #000; }
-      
-      .radio-display {
-          padding: 20px;
-          text-align: center;
-          background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
-      }
+      .radio-display { padding: 20px; text-align: center; }
+      .custom-audio { width: 100%; filter: invert(1) hue-rotate(90deg) brightness(1.5); margin-top: 10px; }
 
-      .radio-waves {
-          height: 40px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 3px;
-          margin-bottom: 15px;
-      }
+      /* --- PROYECTOS --- */
+      .meu-swiper { padding: 20px 0 60px 0 !important; }
+      .projeto-card { padding: 20px; height: 100%; }
+      .projeto-card img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
+      .github-btn { padding: 10px; border: 1px solid var(--neon-green); color: var(--neon-green); text-decoration: none; text-align: center; border-radius: 5px; font-family: 'Share Tech Mono'; transition: 0.3s; margin-top: auto; }
+      .github-btn:hover { background: var(--neon-green); color: #000; }
 
-      .wave { width: 4px; height: 10px; background: var(--neon-green); animation: wave 1s infinite; }
-      .wave:nth-child(2) { animation-delay: 0.2s; }
-      .wave:nth-child(3) { animation-delay: 0.4s; }
-      @keyframes wave { 0%, 100% { height: 10px; } 50% { height: 30px; } }
-
-      audio.custom-player {
-          width: 100%;
-          filter: invert(1) hue-rotate(90deg) brightness(1.5); /* Hack para cambiar color de audio nativo */
-      }
-
-      /* --- PORTAFOLIO (SWIPER FIX) --- */
-      .section-title { text-align: center; font-family: 'Chakra Petch'; color: var(--neon-green); margin: 4rem 0 2rem; text-transform: uppercase; letter-spacing: 4px; }
-      
-      .meu-swiper { padding: 20px 0 50px 0 !important; width: 100%; height: auto; }
-      
-      .projeto-card {
-          background: rgba(15, 15, 15, 0.9);
-          border: 2px solid var(--neon-green);
-          border-radius: 15px;
-          padding: 20px;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          animation: neonBreath 4s infinite;
-          transition: 0.3s;
-      }
-
-      .projeto-card img { width: 100%; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(0, 255, 136, 0.2); }
-      .projeto-card h4 { font-family: 'Chakra Petch'; color: var(--neon-green); margin: 0 0 10px; }
-      .projeto-card p { font-size: 0.85rem; color: #ccc; margin-bottom: 20px; flex-grow: 1; }
-      
-      .github-btn {
-          padding: 10px;
-          border: 1px solid var(--neon-green);
-          color: var(--neon-green);
-          text-decoration: none;
-          text-align: center;
-          border-radius: 5px;
-          font-size: 0.8rem;
-          transition: 0.3s;
-      }
-      .github-btn:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 15px var(--neon-green); }
-
+      /* Navegación Swiper */
       .swiper-button-next, .swiper-button-prev { color: var(--neon-green) !important; }
       .swiper-pagination-bullet-active { background: var(--neon-green) !important; }
-
     </style>
   </head>
 
   <body>
-    <header class="cabecalho">
-      <div class="container cabecalho-container">
-        <a href="#" class="cabecalho-logo">LAURA<span>.</span>ATAIDE</a>
-        <nav class="cabecalho-menu">
-          <a href="#multimedia">MULTIMEDIA</a>
-          <a href="#sobre">SOBRE</a>
-          <a href="#projetos">PORTAFOLIO</a>
-          <a href="#contato">CONTATO</a>
+    <header style="padding: 20px 0; border-bottom: 1px solid rgba(0,255,136,0.1);">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <a href="#" style="font-family:'Chakra Petch'; color:#fff; text-decoration:none; font-size:1.5rem;">LAURA<span style="color:var(--neon-green);">.</span>ATAIDE</a>
+        <nav>
+            <a href="#multimedia" style="color:#ccc; text-decoration:none; margin-left:20px; font-size:0.8rem;">MULTIMEDIA</a>
+            <a href="#projetos" style="color:#ccc; text-decoration:none; margin-left:20px; font-size:0.8rem;">PORTAFOLIO</a>
         </nav>
       </div>
     </header>
 
     <main class="container">
       <section class="conteudo-principal">
-        <div class="conteudo-principal-escrito">
+        <div class="hero-laser-card">
           <h1 class="conteudo-principal-titulo">PORTFÓLIO<span>Software Engineer | Backend</span></h1>
-          <h2 style="font-weight: 400; font-size: 1rem; color: #ccc; margin-top: 15px;">
-            Java & Spring Boot Expert. Especialista em infraestrutura e alta performance.
-          </h2>
-          <div style="margin-top: 20px;"><img src="https://raw.githubusercontent.com/lauraataide8/lauraataide8/output/github-contribution-grid-snake.svg" alt="Snake" width="100%"></div>
+          <p style="font-family: 'Share Tech Mono'; color: #ccc; margin-top: 20px; font-size: 0.9rem; line-height: 1.6;">
+            > Java & Spring Boot Expert.<br>
+            > Infrastructure Specialist.<br>
+            > Status: <span style="color: var(--neon-green);">System_Online</span>
+          </p>
         </div>
         <div class="conteudo-principal-imagem"><img src="assets/laura.png" alt="Laura Ataide" /></div>
       </section>
@@ -172,19 +147,15 @@
       <section id="multimedia">
         <h3 class="section-title">System Stream</h3>
         <div class="multimedia-container">
-          <div class="player-card">
+          <div class="respiracao-card">
             <div class="player-header"><span>LIVE_VIDEO.SYS</span><span>REC ●</span></div>
-            <iframe src="https://www.oranews.tv/livetv2.php" class="tv-frame" allowfullscreen></iframe>
+            <iframe src="https://www.oranews.tv/livetv2.php" class="tv-frame"></iframe>
           </div>
-
-          <div class="player-card">
-            <div class="player-header"><span>SAT_RADIO_LINK.EXE</span><span>SIGNAL: HIGH</span></div>
+          <div class="respiracao-card">
+            <div class="player-header"><span>RADIO_LINK.EXE</span><span>SIGNAL: HIGH</span></div>
             <div class="radio-display">
-                <div class="radio-waves">
-                    <div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="wave"></div>
-                </div>
-                <p style="font-family: 'Share Tech Mono'; color: var(--neon-green); font-size: 0.8rem; margin-bottom: 15px;">FREQ: 98.5 MHz - STREAMING ACTIVE</p>
-                <audio controls class="custom-player">
+                <p style="font-family: 'Share Tech Mono'; color: var(--neon-green); font-size: 0.7rem;">DECODING AUDIO STREAM...</p>
+                <audio controls class="custom-audio">
                     <source src="https://stream.zeno.fm/e9c34m2sg48uv" type="audio/mpeg">
                 </audio>
             </div>
@@ -197,26 +168,26 @@
         <div class="swiper meu-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <div class="projeto-card">
+              <div class="projeto-card respiracao-card">
                 <img src="assets/projeto.png" alt="Project">
-                <h4>Java 21 Modernization</h4>
-                <p>Migración de sistemas legados para arquitectura Spring Boot con alta disponibilidad.</p>
+                <h4 style="color:var(--neon-green); font-family:'Chakra Petch';">Java 21 Modernization</h4>
+                <p style="font-size:0.8rem; color:#ccc;">Migración de sistemas para arquitectura Spring Boot.</p>
                 <a href="https://github.com/lauraataide8" class="github-btn" target="_blank">ACCESS_DATA</a>
               </div>
             </div>
             <div class="swiper-slide">
-              <div class="projeto-card">
+              <div class="projeto-card respiracao-card">
                 <img src="assets/milan.png" alt="Project">
-                <h4>AC Milan Site</h4>
-                <p>Hub central para fans. Diseño responsivo y optimización de carga extrema.</p>
+                <h4 style="color:var(--neon-green); font-family:'Chakra Petch';">AC Milan Site</h4>
+                <p style="font-size:0.8rem; color:#ccc;">Diseño responsivo para comunidad fan.</p>
                 <a href="https://lauraataide8.github.io/projeto_site_futebol_feminino_senaisp/" class="github-btn" target="_blank">VIEW_INTERFACE</a>
               </div>
             </div>
             <div class="swiper-slide">
-              <div class="projeto-card">
+              <div class="projeto-card respiracao-card">
                 <img src="assets/PETPLACEAPP.png" alt="Project">
-                <h4>Pet Place UX</h4>
-                <p>Prototipagem de alta fidelidad enfocada en la experiencia de usuario final.</p>
+                <h4 style="color:var(--neon-green); font-family:'Chakra Petch';">Pet Place UX</h4>
+                <p style="font-size:0.8rem; color:#ccc;">Prototipagem de alta fidelidad en Figma.</p>
                 <a href="#" class="github-btn">OPEN_FIGMA</a>
               </div>
             </div>
@@ -228,17 +199,16 @@
       </section>
     </main>
 
-    <footer id="contato" style="text-align: center; padding: 40px; margin-top: 50px; border-top: 1px solid rgba(0,255,136,0.2);">
-      <p style="font-family: 'Share Tech Mono'; font-size: 0.8rem;">[SYSTEM STATUS: ONLINE] - 2026 Laura Ataide</p>
+    <footer style="text-align:center; padding:40px; color:#444; font-family:'Share Tech Mono'; font-size:0.7rem;">
+        [SYSTEM_STATUS: ONLINE] - 2026
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      const swiper = new Swiper(".meu-swiper", {
+      new Swiper(".meu-swiper", {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
-        centeredSlides: false, // Asegura que no se oculten tarjetas a los lados
         pagination: { el: ".swiper-pagination", clickable: true },
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
