@@ -31,9 +31,9 @@
           height: 100%;
           background: radial-gradient(circle at center, rgba(0, 255, 136, 0.03) 0%, transparent 70%),
                       url('https://www.transparenttextures.com/patterns/stardust.png');
-          animation: backgroundMove 100s linear infinite;
+          animation: backgroundMove 120s linear infinite;
           z-index: -1;
-          opacity: 0.4;
+          opacity: 0.35;
       }
 
       @keyframes backgroundMove {
@@ -41,37 +41,45 @@
           to { background-position: 1000px 1000px; }
       }
 
-      /* --- ANIMACIÓN DE NEÓN --- */
+      /* --- ANIMACIÓN DE NEÓN GLOBAL --- */
       @keyframes neonBreath {
           0%, 100% {
-              box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 20px #00ff88;
+              box-shadow: 0 0 7px #00ff88, 0 0 15px rgba(0, 255, 136, 0.7);
               border-color: #00ff88;
           }
           50% {
-              box-shadow: 0 0 10px #00ff88, 0 0 25px #00ff88, 0 0 45px #00ff88;
-              border-color: #55ffb8;
+              box-shadow: 0 0 15px #00ff88, 0 0 35px rgba(0, 255, 136, 0.9), 0 0 50px rgba(0, 255, 136, 0.6);
+              border-color: #77ffc9;
           }
       }
 
-      /* --- CONTENEDORES CON LUCES DE NEÓN --- */
+      /* --- CONTENEDORES CON LUCES DE NEÓN (MULTIMEDIA Y PORTAFOLIO) --- */
       .player-card, .projeto-card {
-          background: rgba(10, 10, 10, 0.9);
+          background: rgba(10, 10, 10, 0.85);
           border: 2px solid #00ff88; 
-          border-radius: 15px;
-          padding: 1.5rem;
+          border-radius: 18px;
+          padding: 2rem;
           text-align: center;
-          transition: transform 0.3s ease;
-          backdrop-filter: blur(10px);
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+          backdrop-filter: blur(8px);
           
           /* Aplicación de la luz de neón animada */
-          animation: neonBreath 3s infinite ease-in-out;
+          animation: neonBreath 4s infinite ease-in-out;
+          
+          /* Asegurar que las tarjetas de proyecto tengan altura consistente */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%; 
+          box-sizing: border-box;
       }
 
       .player-card:hover, .projeto-card:hover {
-          transform: scale(1.03);
-          animation: none; /* Se detiene la animación al hacer hover para resaltar el brillo máximo */
-          box-shadow: 0 0 20px #00ff88, 0 0 50px #00ff88;
+          transform: scale(1.04) translateY(-5px);
+          animation: none; /* Brillo fijo y máximo en hover */
+          box-shadow: 0 0 25px #00ff88, 0 0 60px rgba(0, 255, 136, 0.8);
           cursor: pointer;
+          background: rgba(15, 15, 15, 0.95);
       }
 
       /* --- DISEÑO DE MULTIMEDIA --- */
@@ -80,12 +88,12 @@
           justify-content: center;
           gap: 2.5rem;
           flex-wrap: wrap;
-          margin-top: 2rem;
+          margin-top: 2.5rem;
       }
 
       .player-card {
           width: 100%;
-          max-width: 400px;
+          max-width: 420px;
       }
 
       .player-card h4 {
@@ -93,6 +101,7 @@
           color: #00ff88;
           font-family: 'Chakra Petch', sans-serif;
           letter-spacing: 2px;
+          text-transform: uppercase;
           text-shadow: 0 0 10px #00ff88;
       }
 
@@ -100,18 +109,64 @@
           width: 100%;
           border-radius: 8px;
           background: #000;
-          border: 1px solid rgba(0, 255, 136, 0.3);
+          border: 1px solid rgba(0, 255, 136, 0.2);
+          outline: none;
       }
 
       audio.player {
           height: 45px;
       }
 
+      /* --- DISEÑO DE PORTAFOLIO (PROJETOS) --- */
+      /* Ajustes para Swiper y las tarjetas de proyecto */
+      .swiper-slide {
+          height: auto; /* Permite que las tarjetas dicten la altura */
+          display: flex;
+          padding: 15px 0; /* Espacio para que el brillo no se corte */
+      }
+
+      .projeto-card h4 {
+          color: #00ff88;
+          font-family: 'Chakra Petch', sans-serif;
+          margin: 15px 0 10px 0;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+      }
+
+      .projeto-card p {
+          font-size: 0.9rem;
+          color: #ccc;
+          margin-bottom: 20px;
+          flex-grow: 1; /* Empuja el botón hacia abajo */
+      }
+
+      .github-btn {
+          display: inline-block;
+          color: #fff;
+          text-decoration: none;
+          border: 1px solid #00ff88;
+          padding: 8px 25px;
+          border-radius: 25px;
+          font-size: 0.9rem;
+          transition: background 0.3s ease, box-shadow 0.3s ease;
+          background: rgba(0, 255, 136, 0.05);
+      }
+
+      .github-btn:hover {
+          background: #00ff88;
+          color: #000;
+          box-shadow: 0 0 15px #00ff88;
+      }
+
       /* Estilo general de títulos para que combine */
       .conteudo-secundario-titulo {
-          text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+          text-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
           color: #fff;
           font-family: 'Chakra Petch', sans-serif;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          text-align: center;
+          margin-bottom: 2rem;
       }
     </style>
   </head>
@@ -123,7 +178,7 @@
         <nav class="cabecalho-menu">
           <a class="cabecalho-menu-item" href="#multimedia">Multimedia</a>
           <a class="cabecalho-menu-item" href="#sobre">Sobre</a>
-          <a class="cabecalho-menu-item" href="#projetos">Projetos</a>
+          <a class="cabecalho-menu-item" href="#projetos">Portafolio</a>
           <a class="cabecalho-menu-item" href="#habilidades">Habilidades</a>
           <a class="cabecalho-menu-item" href="#contato">Contato</a>
         </nav>
@@ -184,15 +239,42 @@
             <div class="swiper-slide">
               <div class="projeto-card">
                 <div class="projeto-imagem-wrapper">
-                  <img src="assets/projeto.png" alt="Modernização Backend" style="width: 100%; border-radius: 5px;"/>
+                  <img src="assets/projeto.png" alt="Modernização Backend" style="width: 100%; border-radius: 8px; border: 1px solid rgba(0,255,136,0.2);"/>
                 </div>
-                <h4 style="color: #00ff88; margin-top: 10px;">Modernização Java 21</h4>
-                <a href="https://github.com/lauraataide8" class="github-btn" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; color: #fff; text-decoration: none; border: 1px solid #00ff88; padding: 5px 15px; border-radius: 20px;">Ver Repo</a>
+                <h4>Modernização Java 21</h4>
+                <p>Migración de sistemas legados para arquitectura Spring Boot con foco en escalabilidad.</p>
+                <div class="btn-container">
+                    <a href="https://github.com/lauraataide8" class="github-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Ver Repo</a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="projeto-card">
+                <div class="projeto-imagem-wrapper">
+                  <img src="assets/milan.png" alt="AC Milan Fan Site" style="width: 100%; border-radius: 8px; border: 1px solid rgba(0,255,136,0.2);"/>
+                </div>
+                <h4>AC Milan Fan Site</h4>
+                <p>Hub central para fãs do time feminino do AC Milan. Foco em Web Design responsivo.</p>
+                <div class="btn-container">
+                    <a href="https://lauraataide8.github.io/projeto_site_futebol_feminino_senaisp/" class="github-btn" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Visitar Site</a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="projeto-card">
+                <div class="projeto-imagem-wrapper">
+                  <img src="assets/PETPLACEAPP.png" alt="UX Design" style="width: 100%; border-radius: 8px; border: 1px solid rgba(0,255,136,0.2);"/>
+                </div>
+                <h4>Pet Place (UI/UX)</h4>
+                <p>Prototipagem de alta fidelidade no Figma focada na jornada do usuário.</p>
+                <div class="btn-container">
+                    <a href="https://www.figma.com/proto/Tuu40ijV9A82sYHUUocQ3D/PETPLACE" class="github-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-figma"></i> Ver Figma</a>
+                </div>
               </div>
             </div>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next" style="color: #00ff88;"></div>
+          <div class="swiper-button-prev" style="color: #00ff88;"></div>
           <div class="swiper-pagination"></div>
         </div>
       </section>
@@ -200,15 +282,15 @@
       <section id="habilidades" class="conteudo-secundario">
         <h3 class="conteudo-secundario-titulo">Tech Stack</h3>
         <ul class="habilidades-lista" style="list-style: none; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; padding: 0;">
-          <li style="background: rgba(0, 255, 136, 0.1); padding: 10px 20px; border-radius: 10px; border: 1px solid #00ff88;">Java</li>
-          <li style="background: rgba(0, 255, 136, 0.1); padding: 10px 20px; border-radius: 10px; border: 1px solid #00ff88;">Spring Boot</li>
-          <li style="background: rgba(0, 255, 136, 0.1); padding: 10px 20px; border-radius: 10px; border: 1px solid #00ff88;">Docker</li>
+          <li style="background: rgba(0, 255, 136, 0.08); padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(0, 255, 136, 0.5); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);">Java</li>
+          <li style="background: rgba(0, 255, 136, 0.08); padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(0, 255, 136, 0.5); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);">Spring Boot</li>
+          <li style="background: rgba(0, 255, 136, 0.08); padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(0, 255, 136, 0.5); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);">Docker</li>
         </ul>
       </section>
     </main>
 
-    <footer id="contato" class="rodape" style="text-align: center; padding: 40px 0; border-top: 1px solid #00ff88; margin-top: 50px;">
-      <p>© 2026 Laura Martins de Ataide. Desenvolvido com café e "Rick & Morty".</p>
+    <footer id="contato" class="rodape" style="text-align: center; padding: 40px 0; border-top: 1px solid rgba(0, 255, 136, 0.5); margin-top: 50px; background: rgba(10,10,10,0.5);">
+      <p>© 2026 Laura Martins de Ataide. Desenvolvido com café y "Rick & Morty".</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -217,6 +299,7 @@
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
+        grabCursor: true, // Cambia el cursor a una mano al pasar por encima
         pagination: { el: ".swiper-pagination", clickable: true },
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
