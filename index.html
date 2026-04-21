@@ -19,6 +19,51 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+    
+    <style>
+      /* Estilos específicos para la nueva sección Multimedia */
+      .multimedia-container {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          flex-wrap: wrap;
+          margin-top: 2rem;
+      }
+
+      .player-card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid #00ff88; /* Color representativo de tu tech stack */
+          border-radius: 15px;
+          padding: 1.5rem;
+          width: 100%;
+          max-width: 450px;
+          text-align: center;
+          transition: transform 0.3s ease;
+      }
+
+      .player-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+      }
+
+      .player-card h4 {
+          margin-bottom: 1.2rem;
+          color: #fff;
+          font-family: 'Chakra Petch', sans-serif;
+          text-transform: uppercase;
+      }
+
+      .player {
+          width: 100%;
+          border-radius: 8px;
+          background: #000;
+          outline: none;
+      }
+
+      audio.player {
+          height: 45px;
+      }
+    </style>
   </head>
 
   <body>
@@ -29,6 +74,7 @@
           <a class="cabecalho-menu-item" href="#sobre">Sobre</a>
           <a class="cabecalho-menu-item" href="#projetos">Projetos</a>
           <a class="cabecalho-menu-item" href="#habilidades">Habilidades</a>
+          <a class="cabecalho-menu-item" href="#multimedia">Multimedia</a>
           <a class="cabecalho-menu-item" href="#contato">Contato</a>
         </nav>
       </div>
@@ -55,30 +101,6 @@
         <div class="conteudo-principal-imagem">
           <img src="assets/laura.png" alt="Laura Ataide" />
         </div>
-
-      <!-- Nueva sección multimedia -->
-      <section id="multimedia" class="conteudo-secundario">
-        <h3 class="conteudo-secundario-titulo">Reproductores</h3>
-        <div class="multimedia-container">
-          <!-- TV -->
-          <div class="player-card">
-            <h4>TV en Vivo</h4>
-            <video controls poster="assets/tv-poster.png" class="player">
-              <source src="assets/sample-video.mp4" type="video/mp4" />
-              Tu navegador no soporta video.
-            </video>
-          </div>
-          <!-- Radio -->
-          <div class="player-card">
-            <h4>Radio Online</h4>
-            <audio controls class="player">
-              <source src="assets/sample-audio.mp3" type="audio/mpeg" />
-              Tu navegador no soporta audio.
-            </audio>
-          </div>
-        </div>
-      </section>
-
       </section>
 
       <section id="sobre" class="conteudo-secundario">
@@ -88,27 +110,11 @@
             Com uma trajetória de mais de 5 anos em tecnologia, minha evolução
             da <strong>Administração de Infraestrutura</strong> para o
             <strong>Desenvolvimento Backend</strong> trouxe um diferencial
-            técnico decisivo. Essa vivência em redes e servidores me confere uma
-            visão sistêmica privilegiada: antecipo gargalos e projeto
-            arquiteturas focadas em
-            <strong>segurança, escalabilidade e alta disponibilidade</strong>
-            desde o primeiro commit.
+            técnico decisivo.
           </p>
-
           <p>
-            No ecossistema Backend, foco na modernização de sistemas e alta
-            performance com <strong>Java (17, 21 e 25)</strong> e
-            <strong>Spring Boot</strong>. Atuo na transformação de regras de
-            negócio complexas em soluções robustas, aplicando boas práticas de
-            arquitetura e otimização em bancos de dados como
-            <strong>SQL Server</strong>.
-          </p>
-
-          <p>
-            No âmbito acadêmico, curso ADS na
-            <strong>Faculdade Impacta</strong>, onde conecto a teoria à prática
-            de soluções <strong>Cloud (Azure)</strong> e Engenharia de Dados,
-            preparando-me para os desafios de ambientes distribuídos.
+            No ecossistema Backend, foco na modernização de sistemas com <strong>Java (17, 21 e 25)</strong> e
+            <strong>Spring Boot</strong>.
           </p>
         </div>
       </section>
@@ -123,55 +129,11 @@
                   <img src="assets/projeto.png" alt="Modernização Backend" />
                 </div>
                 <h4>Modernização Java 21</h4>
-                <p>
-                  Migração de sistemas legados para arquitetura Spring Boot com
-                  foco em escalabilidade.
-                </p>
-                <a
-                  href="https://github.com/lauraataide8"
-                  class="github-btn"
-                  target="_blank"
-                  >Ver Repositório</a
-                >
+                <p>Migración de sistemas legados para arquitectura Spring Boot.</p>
+                <a href="https://github.com/lauraataide8" class="github-btn" target="_blank" rel="noopener noreferrer">Ver Repositório</a>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div class="projeto-card">
-                <div class="projeto-imagem-wrapper">
-                  <img src="assets/milan.png" alt="AC Milan Fan Site" />
-                </div>
-                <h4>AC Milan Fan Site</h4>
-                <p>
-                  Hub central para fãs do time feminino do AC Milan. Foco em Web
-                  Design responsivo.
-                </p>
-                <a
-                  href="https://lauraataide8.github.io/projeto_site_futebol_feminino_senaisp/"
-                  class="github-btn"
-                  target="_blank"
-                  >Visitar Site</a
-                >
-              </div>
             </div>
-            <div class="swiper-slide">
-              <div class="projeto-card">
-                <div class="projeto-imagem-wrapper">
-                  <img src="assets/PETPLACEAPP.png" alt="UX Design" />
-                </div>
-                <h4>Pet Place (UI/UX)</h4>
-                <p>
-                  Prototipagem de alta fidelidade no Figma focada na jornada do
-                  usuário.
-                </p>
-                <a
-                  href="https://www.figma.com/proto/Tuu40ijV9A82sYHUUocQ3D/PETPLACE"
-                  class="github-btn"
-                  target="_blank"
-                  >Ver Figma</a
-                >
-              </div>
-            </div>
-          </div>
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-pagination"></div>
@@ -184,20 +146,30 @@
           <li><i class="fa-brands fa-java"></i><span>Java 17/21/25</span></li>
           <li><i class="fa-solid fa-leaf"></i><span>Spring Boot</span></li>
           <li><i class="fa-solid fa-database"></i><span>SQL Server</span></li>
-          <li><i class="fa-solid fa-database"></i><span>MySQL</span></li>
-          <li><i class="fa-solid fa-database"></i><span>PostgreSQL</span></li>
           <li><i class="fa-brands fa-docker"></i><span>Docker</span></li>
-          <li><i class="fa-solid fa-box"></i><span>Maven</span></li>
-          <li><i class="fa-solid fa-code"></i><span>CRUD / API REST</span></li>
-          <li>
-            <i class="fa-solid fa-network-wired"></i><span>Infraestrutura</span>
-          </li>
           <li><i class="fa-brands fa-linux"></i><span>Linux</span></li>
-          <li>
-            <i class="fa-brands fa-windows"></i><span>Windows Server</span>
-          </li>
           <li><i class="fa-brands fa-git-alt"></i><span>Git</span></li>
         </ul>
+      </section>
+
+      <section id="multimedia" class="conteudo-secundario">
+        <h3 class="conteudo-secundario-titulo">Reproductores</h3>
+        <div class="multimedia-container">
+          <div class="player-card">
+            <h4>TV en Vivo</h4>
+            <video controls poster="assets/tv-poster.png" class="player">
+              <source src="assets/sample-video.mp4" type="video/mp4" />
+              Tu navegador no soporta video.
+            </video>
+          </div>
+          <div class="player-card">
+            <h4>Radio Online</h4>
+            <audio controls class="player">
+              <source src="assets/sample-audio.mp3" type="audio/mpeg" />
+              Tu navegador no soporta audio.
+            </audio>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -206,55 +178,17 @@
         <div class="rodape-info">
           <h2>Vamos Conversar?</h2>
           <div class="rodape-contato-badges">
-            <a href="mailto:lauramartinsataide@gmail.com" class="badge-contato"
-              ><i class="fa-solid fa-envelope"></i><span>Email</span></a
-            >
-            <a
-              href="https://www.linkedin.com/in/lauraataide91/"
-              target="_blank"
-              class="badge-contato"
-              ><i class="fa-brands fa-linkedin"></i><span>LinkedIn</span></a
-            >
-            <a
-              href="https://github.com/lauraataide8"
-              target="_blank"
-              class="badge-contato"
-              ><i class="fa-brands fa-github"></i><span>GitHub</span></a
-            >
+            <a href="mailto:lauramartinsataide@gmail.com" class="badge-contato"><i class="fa-solid fa-envelope"></i><span>Email</span></a>
+            <a href="https://www.linkedin.com/in/lauraataide91/" target="_blank" rel="noopener noreferrer" class="badge-contato"><i class="fa-brands fa-linkedin"></i><span>LinkedIn</span></a>
           </div>
         </div>
-
-        <a
-          href="https://github.com/lauraataide8?tab=repositories"
-          target="_blank"
-          class="portal-gun-card"
-        >
-          <div class="card-conteudo">
-            <i class="fa-brands fa-github"></i>
-            <span class="status-texto"> ABRIR REPOSITÓRIOS</span>
-            <span class="clique-texto">SYSTEM: ON </span>
-          </div>
-          <div class="fluido-container">
-            <div class="bolha"></div>
-            <div class="bolha"></div>
-            <div class="bolha"></div>
-          </div>
-        </a>
-      </div>
-
-      <div class="rodape-copyright">
-        <p>
-          © 2026 Laura Martins de Ataide. Desenvolvido café e "Rick & Morty".
-        </p>
+        <div class="rodape-copyright">
+          <p>© 2026 Laura Martins de Ataide. Desenvolvido com café e "Rick & Morty".</p>
+        </div>
       </div>
     </footer>
 
-    <a
-      href="https://wa.me/5511999498492"
-      class="whatsapp-flutuante"
-      target="_blank"
-      ><i class="fa-brands fa-whatsapp"></i
-    ></a>
+    <a href="https://wa.me/5511999498492" class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
@@ -263,10 +197,7 @@
         spaceBetween: 30,
         loop: true,
         pagination: { el: ".swiper-pagination", clickable: true },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
       });
     </script>
