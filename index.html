@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="style.css" />
     
     <style>
-      /* --- FONDO NEGRO PURO Y ANIMACIÓN FIJA --- */
+      /* --- FONDO NEGRO PURO Y ANIMACIÓN --- */
       body {
           background-color: #000000;
           margin: 0;
@@ -33,7 +33,7 @@
                       url('https://www.transparenttextures.com/patterns/stardust.png');
           animation: backgroundMove 120s linear infinite;
           z-index: -1;
-          opacity: 0.35;
+          opacity: 0.3;
       }
 
       @keyframes backgroundMove {
@@ -44,129 +44,120 @@
       /* --- ANIMACIÓN DE NEÓN GLOBAL --- */
       @keyframes neonBreath {
           0%, 100% {
-              box-shadow: 0 0 7px #00ff88, 0 0 15px rgba(0, 255, 136, 0.7);
+              box-shadow: 0 0 10px #00ff88, 0 0 20px rgba(0, 255, 136, 0.4);
               border-color: #00ff88;
           }
           50% {
-              box-shadow: 0 0 15px #00ff88, 0 0 35px rgba(0, 255, 136, 0.9), 0 0 50px rgba(0, 255, 136, 0.6);
+              box-shadow: 0 0 20px #00ff88, 0 0 40px rgba(0, 255, 136, 0.8);
               border-color: #77ffc9;
           }
       }
 
-      /* --- CONTENEDORES CON LUCES DE NEÓN (MULTIMEDIA Y PORTAFOLIO) --- */
+      /* --- SECCIÓN HERO (PRINCIPAL) CON NEÓN --- */
+      .conteudo-principal {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 4rem 2rem;
+          gap: 2rem;
+      }
+
+      .conteudo-principal-escrito {
+          background: rgba(10, 10, 10, 0.6);
+          padding: 2.5rem;
+          border-radius: 20px;
+          border-left: 5px solid #00ff88;
+          animation: neonBreath 4s infinite ease-in-out;
+          backdrop-filter: blur(10px);
+      }
+
+      .conteudo-principal-titulo {
+          font-family: 'Chakra Petch', sans-serif;
+          font-size: 3rem;
+          line-height: 1;
+          text-shadow: 0 0 15px #00ff88;
+      }
+
+      .conteudo-principal-titulo span {
+          display: block;
+          color: #00ff88;
+          font-size: 1.5rem;
+      }
+
+      .conteudo-principal-imagem img {
+          width: 350px;
+          height: 350px;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 4px solid #00ff88;
+          animation: neonBreath 4s infinite ease-in-out;
+          filter: drop-shadow(0 0 15px #00ff88);
+          transition: transform 0.5s ease;
+      }
+
+      .conteudo-principal-imagem img:hover {
+          transform: scale(1.05) rotate(2deg);
+      }
+
+      /* --- TARJETAS DE PORTAFOLIO Y MULTIMEDIA --- */
       .player-card, .projeto-card {
           background: rgba(10, 10, 10, 0.85);
           border: 2px solid #00ff88; 
           border-radius: 18px;
           padding: 2rem;
           text-align: center;
-          transition: transform 0.4s ease, box-shadow 0.4s ease;
-          backdrop-filter: blur(8px);
-          
-          /* Aplicación de la luz de neón animada */
           animation: neonBreath 4s infinite ease-in-out;
-          
-          /* Asegurar que las tarjetas de proyecto tengan altura consistente */
+          backdrop-filter: blur(8px);
+          height: 100%;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          height: 100%; 
-          box-sizing: border-box;
       }
 
       .player-card:hover, .projeto-card:hover {
-          transform: scale(1.04) translateY(-5px);
-          animation: none; /* Brillo fijo y máximo en hover */
-          box-shadow: 0 0 25px #00ff88, 0 0 60px rgba(0, 255, 136, 0.8);
-          cursor: pointer;
-          background: rgba(15, 15, 15, 0.95);
+          transform: translateY(-10px);
+          box-shadow: 0 0 30px #00ff88;
       }
 
-      /* --- DISEÑO DE MULTIMEDIA --- */
+      /* --- OTROS ESTILOS --- */
       .multimedia-container {
           display: flex;
           justify-content: center;
           gap: 2.5rem;
           flex-wrap: wrap;
-          margin-top: 2.5rem;
       }
 
-      .player-card {
-          width: 100%;
-          max-width: 420px;
-      }
-
-      .player-card h4 {
-          margin-bottom: 1.5rem;
-          color: #00ff88;
+      .player { width: 100%; border-radius: 8px; background: #000; }
+      
+      .conteudo-secundario-titulo {
+          text-align: center;
           font-family: 'Chakra Petch', sans-serif;
-          letter-spacing: 2px;
+          color: #00ff88;
           text-transform: uppercase;
+          letter-spacing: 3px;
+          margin: 3rem 0;
           text-shadow: 0 0 10px #00ff88;
       }
 
-      .player {
-          width: 100%;
-          border-radius: 8px;
-          background: #000;
-          border: 1px solid rgba(0, 255, 136, 0.2);
-          outline: none;
-      }
-
-      audio.player {
-          height: 45px;
-      }
-
-      /* --- DISEÑO DE PORTAFOLIO (PROJETOS) --- */
-      /* Ajustes para Swiper y las tarjetas de proyecto */
-      .swiper-slide {
-          height: auto; /* Permite que las tarjetas dicten la altura */
-          display: flex;
-          padding: 15px 0; /* Espacio para que el brillo no se corte */
-      }
-
-      .projeto-card h4 {
-          color: #00ff88;
-          font-family: 'Chakra Petch', sans-serif;
-          margin: 15px 0 10px 0;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-      }
-
-      .projeto-card p {
-          font-size: 0.9rem;
-          color: #ccc;
-          margin-bottom: 20px;
-          flex-grow: 1; /* Empuja el botón hacia abajo */
-      }
-
       .github-btn {
-          display: inline-block;
-          color: #fff;
-          text-decoration: none;
           border: 1px solid #00ff88;
-          padding: 8px 25px;
-          border-radius: 25px;
-          font-size: 0.9rem;
-          transition: background 0.3s ease, box-shadow 0.3s ease;
-          background: rgba(0, 255, 136, 0.05);
+          color: #00ff88;
+          padding: 10px 20px;
+          text-decoration: none;
+          border-radius: 30px;
+          transition: 0.3s;
+          margin-top: auto;
       }
 
       .github-btn:hover {
           background: #00ff88;
           color: #000;
-          box-shadow: 0 0 15px #00ff88;
+          box-shadow: 0 0 20px #00ff88;
       }
 
-      /* Estilo general de títulos para que combine */
-      .conteudo-secundario-titulo {
-          text-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
-          color: #fff;
-          font-family: 'Chakra Petch', sans-serif;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          text-align: center;
-          margin-bottom: 2rem;
+      /* Navegación */
+      .cabecalho-menu-item:hover {
+          color: #00ff88;
+          text-shadow: 0 0 8px #00ff88;
       }
     </style>
   </head>
@@ -174,12 +165,12 @@
   <body>
     <header class="cabecalho">
       <div class="container cabecalho-container">
-        <a href="#" class="cabecalho-logo">Laura<span>.</span>Ataide</a>
+        <a href="#" class="cabecalho-logo" style="color:#fff; text-decoration:none; font-family:'Chakra Petch';">Laura<span style="color:#00ff88;">.</span>Ataide</a>
         <nav class="cabecalho-menu">
           <a class="cabecalho-menu-item" href="#multimedia">Multimedia</a>
           <a class="cabecalho-menu-item" href="#sobre">Sobre</a>
           <a class="cabecalho-menu-item" href="#projetos">Portafolio</a>
-          <a class="cabecalho-menu-item" href="#habilidades">Habilidades</a>
+          <a class="cabecalho-menu-item" href="#habilidades">Tech</a>
           <a class="cabecalho-menu-item" href="#contato">Contato</a>
         </nav>
       </div>
@@ -191,11 +182,11 @@
           <h1 class="conteudo-principal-titulo">
             PORTFÓLIO<span>Laura Ataide</span>
           </h1>
-          <h2 class="conteudo-principal-subtitulo">
-            Software Engineer | Backend Java & Spring Boot <br />
+          <h2 class="conteudo-principal-subtitulo" style="font-weight: 400; margin-top: 1rem;">
+            Software Engineer | <span style="color:#00ff88;">Backend Java & Spring Boot</span> <br />
             Aliando expertise em infraestrutura ao desenvolvimento de alta performance.
           </h2>
-          <div class="snake-container">
+          <div class="snake-container" style="margin-top: 2rem; opacity: 0.8;">
             <img src="https://raw.githubusercontent.com/lauraataide8/lauraataide8/output/github-contribution-grid-snake.svg" alt="GitHub Snake" />
           </div>
         </div>
@@ -205,92 +196,52 @@
       </section>
 
       <section id="multimedia" class="conteudo-secundario">
-        <h3 class="conteudo-secundario-titulo">Reproductores</h3>
+        <h3 class="conteudo-secundario-titulo">Multimedia System</h3>
         <div class="multimedia-container">
           <div class="player-card">
-            <h4><i class="fa-solid fa-tv"></i> TV en Vivo</h4>
+            <h4><i class="fa-solid fa-tv"></i> TV Live</h4>
             <video controls poster="assets/tv-poster.png" class="player">
               <source src="assets/sample-video.mp4" type="video/mp4" />
-              Tu navegador no soporta video.
             </video>
           </div>
           <div class="player-card">
-            <h4><i class="fa-solid fa-radio"></i> Radio Online</h4>
+            <h4><i class="fa-solid fa-radio"></i> Radio Stream</h4>
             <audio controls class="player">
               <source src="assets/sample-audio.mp3" type="audio/mpeg" />
-              Tu navegador no soporta audio.
             </audio>
           </div>
         </div>
       </section>
 
-      <section id="sobre" class="conteudo-secundario">
-        <h3 class="conteudo-secundario-titulo">Sobre Mim</h3>
-        <div class="sobre-texto">
-          <p>Trayectoria de más de 5 años en tecnología...</p>
-          <p>Foco en alta performance con <strong>Java (17, 21 y 25)</strong> y <strong>Spring Boot</strong>.</p>
-        </div>
-      </section>
-
       <section id="projetos" class="conteudo-secundario">
-        <h3 class="conteudo-secundario-titulo">Projetos em Destaque</h3>
+        <h3 class="conteudo-secundario-titulo">Featured Projects</h3>
         <div class="swiper meu-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="projeto-card">
-                <div class="projeto-imagem-wrapper">
-                  <img src="assets/projeto.png" alt="Modernização Backend" style="width: 100%; border-radius: 8px; border: 1px solid rgba(0,255,136,0.2);"/>
-                </div>
+                <img src="assets/projeto.png" alt="Project" style="width:100%; border-radius:10px; margin-bottom:1rem;">
                 <h4>Modernização Java 21</h4>
-                <p>Migración de sistemas legados para arquitectura Spring Boot con foco en escalabilidad.</p>
-                <div class="btn-container">
-                    <a href="https://github.com/lauraataide8" class="github-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Ver Repo</a>
-                </div>
+                <p>Migración de sistemas legados para arquitectura Spring Boot.</p>
+                <a href="#" class="github-btn">Source Code</a>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div class="projeto-card">
-                <div class="projeto-imagem-wrapper">
-                  <img src="assets/milan.png" alt="AC Milan Fan Site" style="width: 100%; border-radius: 8px; border: 1px solid rgba(0,255,136,0.2);"/>
-                </div>
-                <h4>AC Milan Fan Site</h4>
-                <p>Hub central para fãs do time feminino do AC Milan. Foco em Web Design responsivo.</p>
-                <div class="btn-container">
-                    <a href="https://lauraataide8.github.io/projeto_site_futebol_feminino_senaisp/" class="github-btn" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Visitar Site</a>
-                </div>
-              </div>
             </div>
-            <div class="swiper-slide">
-              <div class="projeto-card">
-                <div class="projeto-imagem-wrapper">
-                  <img src="assets/PETPLACEAPP.png" alt="UX Design" style="width: 100%; border-radius: 8px; border: 1px solid rgba(0,255,136,0.2);"/>
-                </div>
-                <h4>Pet Place (UI/UX)</h4>
-                <p>Prototipagem de alta fidelidade no Figma focada na jornada do usuário.</p>
-                <div class="btn-container">
-                    <a href="https://www.figma.com/proto/Tuu40ijV9A82sYHUUocQ3D/PETPLACE" class="github-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-figma"></i> Ver Figma</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-button-next" style="color: #00ff88;"></div>
-          <div class="swiper-button-prev" style="color: #00ff88;"></div>
-          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next" style="color:#00ff88;"></div>
+          <div class="swiper-button-prev" style="color:#00ff88;"></div>
         </div>
       </section>
 
-      <section id="habilidades" class="conteudo-secundario">
-        <h3 class="conteudo-secundario-titulo">Tech Stack</h3>
-        <ul class="habilidades-lista" style="list-style: none; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; padding: 0;">
-          <li style="background: rgba(0, 255, 136, 0.08); padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(0, 255, 136, 0.5); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);">Java</li>
-          <li style="background: rgba(0, 255, 136, 0.08); padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(0, 255, 136, 0.5); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);">Spring Boot</li>
-          <li style="background: rgba(0, 255, 136, 0.08); padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(0, 255, 136, 0.5); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);">Docker</li>
-        </ul>
+      <section id="sobre" class="conteudo-secundario" style="background: rgba(255,255,255,0.02); padding: 3rem; border-radius: 20px; margin-top: 4rem;">
+        <h3 class="conteudo-secundario-titulo">System Information</h3>
+        <div class="sobre-texto" style="line-height: 1.8; color: #ccc;">
+          <p>Trayectoria de más de 5 años en tecnología...</p>
+          <p>Foco en alta performance con <span style="color:#00ff88;">Java & Spring Boot</span>.</p>
+        </div>
       </section>
     </main>
 
-    <footer id="contato" class="rodape" style="text-align: center; padding: 40px 0; border-top: 1px solid rgba(0, 255, 136, 0.5); margin-top: 50px; background: rgba(10,10,10,0.5);">
-      <p>© 2026 Laura Martins de Ataide. Desenvolvido com café y "Rick & Morty".</p>
+    <footer id="contato" style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(0,255,136,0.3); margin-top: 5rem;">
+      <p>© 2026 Laura Martins de Ataide. <span style="color:#00ff88;">System Status: Online</span></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -299,8 +250,6 @@
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
-        grabCursor: true, // Cambia el cursor a una mano al pasar por encima
-        pagination: { el: ".swiper-pagination", clickable: true },
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
       });
