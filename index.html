@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="style.css" />
     
     <style>
-      /* Estilos específicos para la nueva sección Multimedia */
+      /* Estilos para la sección Multimedia */
       .multimedia-container {
           display: flex;
           justify-content: center;
@@ -32,7 +32,7 @@
 
       .player-card {
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid #00ff88; /* Color representativo de tu tech stack */
+          border: 1px solid #00ff88; 
           border-radius: 15px;
           padding: 1.5rem;
           width: 100%;
@@ -71,10 +71,10 @@
       <div class="container cabecalho-container">
         <a href="#" class="cabecalho-logo">Laura<span>.</span>Ataide</a>
         <nav class="cabecalho-menu">
+          <a class="cabecalho-menu-item" href="#multimedia">Multimedia</a>
           <a class="cabecalho-menu-item" href="#sobre">Sobre</a>
           <a class="cabecalho-menu-item" href="#projetos">Projetos</a>
           <a class="cabecalho-menu-item" href="#habilidades">Habilidades</a>
-          <a class="cabecalho-menu-item" href="#multimedia">Multimedia</a>
           <a class="cabecalho-menu-item" href="#contato">Contato</a>
         </nav>
       </div>
@@ -103,6 +103,26 @@
         </div>
       </section>
 
+      <section id="multimedia" class="conteudo-secundario">
+        <h3 class="conteudo-secundario-titulo">Reproductores</h3>
+        <div class="multimedia-container">
+          <div class="player-card">
+            <h4>TV en Vivo</h4>
+            <video controls poster="assets/tv-poster.png" class="player">
+              <source src="assets/sample-video.mp4" type="video/mp4" />
+              Tu navegador no soporta video.
+            </video>
+          </div>
+          <div class="player-card">
+            <h4>Radio Online</h4>
+            <audio controls class="player">
+              <source src="assets/sample-audio.mp3" type="audio/mpeg" />
+              Tu navegador no soporta audio.
+            </audio>
+          </div>
+        </div>
+      </section>
+
       <section id="sobre" class="conteudo-secundario">
         <h3 class="conteudo-secundario-titulo">Sobre Mim</h3>
         <div class="sobre-texto">
@@ -113,8 +133,14 @@
             técnico decisivo.
           </p>
           <p>
-            No ecossistema Backend, foco na modernização de sistemas com <strong>Java (17, 21 e 25)</strong> e
+            No ecossistema Backend, foco na modernização de sistemas e alta
+            performance com <strong>Java (17, 21 e 25)</strong> e
             <strong>Spring Boot</strong>.
+          </p>
+          <p>
+            No âmbito acadêmico, curso ADS na
+            <strong>Faculdade Impacta</strong>, conectando a teoria à prática
+            de soluções <strong>Cloud (Azure)</strong>.
           </p>
         </div>
       </section>
@@ -129,7 +155,7 @@
                   <img src="assets/projeto.png" alt="Modernização Backend" />
                 </div>
                 <h4>Modernização Java 21</h4>
-                <p>Migración de sistemas legados para arquitectura Spring Boot.</p>
+                <p>Migração de sistemas legados para arquitetura Spring Boot.</p>
                 <a href="https://github.com/lauraataide8" class="github-btn" target="_blank" rel="noopener noreferrer">Ver Repositório</a>
               </div>
             </div>
@@ -151,26 +177,6 @@
           <li><i class="fa-brands fa-git-alt"></i><span>Git</span></li>
         </ul>
       </section>
-
-      <section id="multimedia" class="conteudo-secundario">
-        <h3 class="conteudo-secundario-titulo">Reproductores</h3>
-        <div class="multimedia-container">
-          <div class="player-card">
-            <h4>TV en Vivo</h4>
-            <video controls poster="assets/tv-poster.png" class="player">
-              <source src="assets/sample-video.mp4" type="video/mp4" />
-              Tu navegador no soporta video.
-            </video>
-          </div>
-          <div class="player-card">
-            <h4>Radio Online</h4>
-            <audio controls class="player">
-              <source src="assets/sample-audio.mp3" type="audio/mpeg" />
-              Tu navegador no soporta audio.
-            </audio>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer id="contato" class="rodape">
@@ -180,6 +186,7 @@
           <div class="rodape-contato-badges">
             <a href="mailto:lauramartinsataide@gmail.com" class="badge-contato"><i class="fa-solid fa-envelope"></i><span>Email</span></a>
             <a href="https://www.linkedin.com/in/lauraataide91/" target="_blank" rel="noopener noreferrer" class="badge-contato"><i class="fa-brands fa-linkedin"></i><span>LinkedIn</span></a>
+            <a href="https://github.com/lauraataide8" target="_blank" rel="noopener noreferrer" class="badge-contato"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
           </div>
         </div>
         <div class="rodape-copyright">
