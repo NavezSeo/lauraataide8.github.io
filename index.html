@@ -7,28 +7,24 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Poppins:wght@400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css" />
-    
     <style>
-      /* --- FONDO NEGRO PURO Y ANIMACIÓN --- */
+      /* --- BASE & FONDO --- */
+      :root { --neon-green: #00ff88; --dark-bg: #000000; }
+      
       body {
-          background-color: #000000;
+          background-color: var(--dark-bg);
           margin: 0;
           color: #ffffff;
-          overflow-x: hidden;
-          position: relative;
           font-family: 'Poppins', sans-serif;
+          overflow-x: hidden;
       }
 
       body::before {
           content: "";
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+          top: 0; left: 0; width: 100%; height: 100%;
           background: radial-gradient(circle at center, rgba(0, 255, 136, 0.03) 0%, transparent 70%),
                       url('https://www.transparenttextures.com/patterns/stardust.png');
           animation: backgroundMove 120s linear infinite;
@@ -36,142 +32,127 @@
           opacity: 0.3;
       }
 
-      @keyframes backgroundMove {
-          from { background-position: 0 0; }
-          to { background-position: 1000px 1000px; }
-      }
+      @keyframes backgroundMove { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
 
-      /* --- ANIMACIÓN DE NEÓN GLOBAL --- */
       @keyframes neonBreath {
-          0%, 100% {
-              box-shadow: 0 0 10px #00ff88, 0 0 20px rgba(0, 255, 136, 0.4);
-              border-color: #00ff88;
-          }
-          50% {
-              box-shadow: 0 0 20px #00ff88, 0 0 40px rgba(0, 255, 136, 0.8);
-              border-color: #77ffc9;
-          }
+          0%, 100% { box-shadow: 0 0 10px var(--neon-green), 0 0 20px rgba(0, 255, 136, 0.2); border-color: var(--neon-green); }
+          50% { box-shadow: 0 0 20px var(--neon-green), 0 0 40px rgba(0, 255, 136, 0.6); border-color: #77ffc9; }
       }
 
-      /* --- SECCIÓN HERO (PRINCIPAL) CON NEÓN --- */
-      .conteudo-principal {
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+      /* --- HEADER --- */
+      .cabecalho { padding: 20px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.1); }
+      .cabecalho-container { display: flex; justify-content: space-between; align-items: center; }
+      .cabecalho-logo { font-family: 'Chakra Petch'; font-size: 1.5rem; text-decoration: none; color: #fff; }
+      .cabecalho-menu a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+      .cabecalho-menu a:hover { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
+
+      /* --- HERO SECTION --- */
+      .conteudo-principal { display: flex; align-items: center; justify-content: space-between; padding: 6rem 0; gap: 40px; flex-wrap: wrap; }
+      .conteudo-principal-escrito { flex: 1; min-width: 300px; padding: 2rem; background: rgba(10, 10, 10, 0.7); border-radius: 20px; animation: neonBreath 4s infinite; backdrop-filter: blur(10px); }
+      .conteudo-principal-titulo { font-family: 'Chakra Petch'; font-size: 3rem; margin: 0; text-shadow: 0 0 10px var(--neon-green); }
+      .conteudo-principal-titulo span { display: block; font-size: 1.2rem; color: var(--neon-green); margin-top: 10px; }
+      .conteudo-principal-imagem img { width: 300px; height: 300px; border-radius: 50%; border: 3px solid var(--neon-green); animation: neonBreath 4s infinite; object-fit: cover; }
+
+      /* --- REPRODUCTORES (CYBERPUNK STYLE) --- */
+      .multimedia-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 3rem; }
+      
+      .player-card {
+          background: #0a0a0a;
+          border: 2px solid var(--neon-green);
+          border-radius: 10px;
+          overflow: hidden;
+          animation: neonBreath 5s infinite;
+          position: relative;
+      }
+
+      .player-header {
+          background: var(--neon-green);
+          color: #000;
+          padding: 5px 15px;
+          font-family: 'Share Tech Mono', monospace;
+          font-weight: bold;
           display: flex;
-          align-items: center;
           justify-content: space-between;
-          padding: 4rem 2rem;
-          gap: 2rem;
+          font-size: 0.8rem;
       }
 
-      .conteudo-principal-escrito {
-          background: rgba(10, 10, 10, 0.6);
-          padding: 2.5rem;
-          border-radius: 20px;
-          border-left: 5px solid #00ff88;
-          animation: neonBreath 4s infinite ease-in-out;
-          backdrop-filter: blur(10px);
-      }
-
-      .conteudo-principal-titulo {
-          font-family: 'Chakra Petch', sans-serif;
-          font-size: 3rem;
-          line-height: 1;
-          text-shadow: 0 0 15px #00ff88;
-      }
-
-      .conteudo-principal-titulo span {
-          display: block;
-          color: #00ff88;
-          font-size: 1.5rem;
-      }
-
-      .conteudo-principal-imagem img {
-          width: 350px;
-          height: 350px;
-          object-fit: cover;
-          border-radius: 50%;
-          border: 4px solid #00ff88;
-          animation: neonBreath 4s infinite ease-in-out;
-          filter: drop-shadow(0 0 15px #00ff88);
-          transition: transform 0.5s ease;
-      }
-
-      .conteudo-principal-imagem img:hover {
-          transform: scale(1.05) rotate(2deg);
-      }
-
-      /* --- TARJETAS DE PORTAFOLIO Y MULTIMEDIA --- */
-      .player-card, .projeto-card {
-          background: rgba(10, 10, 10, 0.85);
-          border: 2px solid #00ff88; 
-          border-radius: 18px;
-          padding: 2rem;
+      .tv-frame { width: 100%; height: 250px; border: none; background: #000; }
+      
+      .radio-display {
+          padding: 20px;
           text-align: center;
-          animation: neonBreath 4s infinite ease-in-out;
-          backdrop-filter: blur(8px);
+          background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+      }
+
+      .radio-waves {
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 3px;
+          margin-bottom: 15px;
+      }
+
+      .wave { width: 4px; height: 10px; background: var(--neon-green); animation: wave 1s infinite; }
+      .wave:nth-child(2) { animation-delay: 0.2s; }
+      .wave:nth-child(3) { animation-delay: 0.4s; }
+      @keyframes wave { 0%, 100% { height: 10px; } 50% { height: 30px; } }
+
+      audio.custom-player {
+          width: 100%;
+          filter: invert(1) hue-rotate(90deg) brightness(1.5); /* Hack para cambiar color de audio nativo */
+      }
+
+      /* --- PORTAFOLIO (SWIPER FIX) --- */
+      .section-title { text-align: center; font-family: 'Chakra Petch'; color: var(--neon-green); margin: 4rem 0 2rem; text-transform: uppercase; letter-spacing: 4px; }
+      
+      .meu-swiper { padding: 20px 0 50px 0 !important; width: 100%; height: auto; }
+      
+      .projeto-card {
+          background: rgba(15, 15, 15, 0.9);
+          border: 2px solid var(--neon-green);
+          border-radius: 15px;
+          padding: 20px;
           height: 100%;
           display: flex;
           flex-direction: column;
-      }
-
-      .player-card:hover, .projeto-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 0 30px #00ff88;
-      }
-
-      /* --- OTROS ESTILOS --- */
-      .multimedia-container {
-          display: flex;
-          justify-content: center;
-          gap: 2.5rem;
-          flex-wrap: wrap;
-      }
-
-      .player { width: 100%; border-radius: 8px; background: #000; }
-      
-      .conteudo-secundario-titulo {
-          text-align: center;
-          font-family: 'Chakra Petch', sans-serif;
-          color: #00ff88;
-          text-transform: uppercase;
-          letter-spacing: 3px;
-          margin: 3rem 0;
-          text-shadow: 0 0 10px #00ff88;
-      }
-
-      .github-btn {
-          border: 1px solid #00ff88;
-          color: #00ff88;
-          padding: 10px 20px;
-          text-decoration: none;
-          border-radius: 30px;
+          animation: neonBreath 4s infinite;
           transition: 0.3s;
-          margin-top: auto;
       }
 
-      .github-btn:hover {
-          background: #00ff88;
-          color: #000;
-          box-shadow: 0 0 20px #00ff88;
+      .projeto-card img { width: 100%; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(0, 255, 136, 0.2); }
+      .projeto-card h4 { font-family: 'Chakra Petch'; color: var(--neon-green); margin: 0 0 10px; }
+      .projeto-card p { font-size: 0.85rem; color: #ccc; margin-bottom: 20px; flex-grow: 1; }
+      
+      .github-btn {
+          padding: 10px;
+          border: 1px solid var(--neon-green);
+          color: var(--neon-green);
+          text-decoration: none;
+          text-align: center;
+          border-radius: 5px;
+          font-size: 0.8rem;
+          transition: 0.3s;
       }
+      .github-btn:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 15px var(--neon-green); }
 
-      /* Navegación */
-      .cabecalho-menu-item:hover {
-          color: #00ff88;
-          text-shadow: 0 0 8px #00ff88;
-      }
+      .swiper-button-next, .swiper-button-prev { color: var(--neon-green) !important; }
+      .swiper-pagination-bullet-active { background: var(--neon-green) !important; }
+
     </style>
   </head>
 
   <body>
     <header class="cabecalho">
       <div class="container cabecalho-container">
-        <a href="#" class="cabecalho-logo" style="color:#fff; text-decoration:none; font-family:'Chakra Petch';">Laura<span style="color:#00ff88;">.</span>Ataide</a>
+        <a href="#" class="cabecalho-logo">LAURA<span>.</span>ATAIDE</a>
         <nav class="cabecalho-menu">
-          <a class="cabecalho-menu-item" href="#multimedia">Multimedia</a>
-          <a class="cabecalho-menu-item" href="#sobre">Sobre</a>
-          <a class="cabecalho-menu-item" href="#projetos">Portafolio</a>
-          <a class="cabecalho-menu-item" href="#habilidades">Tech</a>
-          <a class="cabecalho-menu-item" href="#contato">Contato</a>
+          <a href="#multimedia">MULTIMEDIA</a>
+          <a href="#sobre">SOBRE</a>
+          <a href="#projetos">PORTAFOLIO</a>
+          <a href="#contato">CONTATO</a>
         </nav>
       </div>
     </header>
@@ -179,77 +160,86 @@
     <main class="container">
       <section class="conteudo-principal">
         <div class="conteudo-principal-escrito">
-          <h1 class="conteudo-principal-titulo">
-            PORTFÓLIO<span>Laura Ataide</span>
-          </h1>
-          <h2 class="conteudo-principal-subtitulo" style="font-weight: 400; margin-top: 1rem;">
-            Software Engineer | <span style="color:#00ff88;">Backend Java & Spring Boot</span> <br />
-            Aliando expertise em infraestrutura ao desenvolvimento de alta performance.
+          <h1 class="conteudo-principal-titulo">PORTFÓLIO<span>Software Engineer | Backend</span></h1>
+          <h2 style="font-weight: 400; font-size: 1rem; color: #ccc; margin-top: 15px;">
+            Java & Spring Boot Expert. Especialista em infraestrutura e alta performance.
           </h2>
-          <div class="snake-container" style="margin-top: 2rem; opacity: 0.8;">
-            <img src="https://raw.githubusercontent.com/lauraataide8/lauraataide8/output/github-contribution-grid-snake.svg" alt="GitHub Snake" />
-          </div>
+          <div style="margin-top: 20px;"><img src="https://raw.githubusercontent.com/lauraataide8/lauraataide8/output/github-contribution-grid-snake.svg" alt="Snake" width="100%"></div>
         </div>
-        <div class="conteudo-principal-imagem">
-          <img src="assets/laura.png" alt="Laura Ataide" />
-        </div>
+        <div class="conteudo-principal-imagem"><img src="assets/laura.png" alt="Laura Ataide" /></div>
       </section>
 
-      <section id="multimedia" class="conteudo-secundario">
-        <h3 class="conteudo-secundario-titulo">Multimedia System</h3>
+      <section id="multimedia">
+        <h3 class="section-title">System Stream</h3>
         <div class="multimedia-container">
           <div class="player-card">
-            <h4><i class="fa-solid fa-tv"></i> TV Live</h4>
-            <video controls poster="assets/tv-poster.png" class="player">
-              <source src="assets/sample-video.mp4" type="video/mp4" />
-            </video>
+            <div class="player-header"><span>LIVE_VIDEO.SYS</span><span>REC ●</span></div>
+            <iframe src="https://www.oranews.tv/livetv2.php" class="tv-frame" allowfullscreen></iframe>
           </div>
+
           <div class="player-card">
-            <h4><i class="fa-solid fa-radio"></i> Radio Stream</h4>
-            <audio controls class="player">
-              <source src="assets/sample-audio.mp3" type="audio/mpeg" />
-            </audio>
+            <div class="player-header"><span>SAT_RADIO_LINK.EXE</span><span>SIGNAL: HIGH</span></div>
+            <div class="radio-display">
+                <div class="radio-waves">
+                    <div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="wave"></div>
+                </div>
+                <p style="font-family: 'Share Tech Mono'; color: var(--neon-green); font-size: 0.8rem; margin-bottom: 15px;">FREQ: 98.5 MHz - STREAMING ACTIVE</p>
+                <audio controls class="custom-player">
+                    <source src="https://stream.zeno.fm/e9c34m2sg48uv" type="audio/mpeg">
+                </audio>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="projetos" class="conteudo-secundario">
-        <h3 class="conteudo-secundario-titulo">Featured Projects</h3>
+      <section id="projetos">
+        <h3 class="section-title">Featured Projects</h3>
         <div class="swiper meu-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="projeto-card">
-                <img src="assets/projeto.png" alt="Project" style="width:100%; border-radius:10px; margin-bottom:1rem;">
-                <h4>Modernização Java 21</h4>
-                <p>Migración de sistemas legados para arquitectura Spring Boot.</p>
-                <a href="#" class="github-btn">Source Code</a>
+                <img src="assets/projeto.png" alt="Project">
+                <h4>Java 21 Modernization</h4>
+                <p>Migración de sistemas legados para arquitectura Spring Boot con alta disponibilidad.</p>
+                <a href="https://github.com/lauraataide8" class="github-btn" target="_blank">ACCESS_DATA</a>
               </div>
             </div>
+            <div class="swiper-slide">
+              <div class="projeto-card">
+                <img src="assets/milan.png" alt="Project">
+                <h4>AC Milan Site</h4>
+                <p>Hub central para fans. Diseño responsivo y optimización de carga extrema.</p>
+                <a href="https://lauraataide8.github.io/projeto_site_futebol_feminino_senaisp/" class="github-btn" target="_blank">VIEW_INTERFACE</a>
+              </div>
             </div>
-          <div class="swiper-button-next" style="color:#00ff88;"></div>
-          <div class="swiper-button-prev" style="color:#00ff88;"></div>
-        </div>
-      </section>
-
-      <section id="sobre" class="conteudo-secundario" style="background: rgba(255,255,255,0.02); padding: 3rem; border-radius: 20px; margin-top: 4rem;">
-        <h3 class="conteudo-secundario-titulo">System Information</h3>
-        <div class="sobre-texto" style="line-height: 1.8; color: #ccc;">
-          <p>Trayectoria de más de 5 años en tecnología...</p>
-          <p>Foco en alta performance con <span style="color:#00ff88;">Java & Spring Boot</span>.</p>
+            <div class="swiper-slide">
+              <div class="projeto-card">
+                <img src="assets/PETPLACEAPP.png" alt="Project">
+                <h4>Pet Place UX</h4>
+                <p>Prototipagem de alta fidelidad enfocada en la experiencia de usuario final.</p>
+                <a href="#" class="github-btn">OPEN_FIGMA</a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
       </section>
     </main>
 
-    <footer id="contato" style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(0,255,136,0.3); margin-top: 5rem;">
-      <p>© 2026 Laura Martins de Ataide. <span style="color:#00ff88;">System Status: Online</span></p>
+    <footer id="contato" style="text-align: center; padding: 40px; margin-top: 50px; border-top: 1px solid rgba(0,255,136,0.2);">
+      <p style="font-family: 'Share Tech Mono'; font-size: 0.8rem;">[SYSTEM STATUS: ONLINE] - 2026 Laura Ataide</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      new Swiper(".meu-swiper", {
+      const swiper = new Swiper(".meu-swiper", {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
+        centeredSlides: false, // Asegura que no se oculten tarjetas a los lados
+        pagination: { el: ".swiper-pagination", clickable: true },
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
       });
